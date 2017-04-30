@@ -1,0 +1,25 @@
+web:
+  build: .
+  dockerfile: Dockerfile
+  command: "bash -c \"cd project && mix phoenix.server\""
+  environment:
+    - MIX_ENV=dev
+    - PORT=4000
+    - PG_HOST=postgres
+    - PG_USERNAME=postgres
+  volumes:
+    - .:/app
+  ports:
+    - "4000:4000"
+  links:
+    - postgres
+  environment:
+    - "USER_ID=${USER_ID}"
+
+# https://hub.docker.com/_/postgres/
+postgres:
+  image: postgres:9.5
+  ports:
+    - "5432"
+  expose:
+    - 5432
