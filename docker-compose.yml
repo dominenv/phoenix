@@ -2,6 +2,7 @@ web:
   build: .
   dockerfile: Dockerfile
   command: "bash -c \"cd project && mix phoenix.server\""
+  user: "${USER_ID}"
   environment:
     - MIX_ENV=dev
     - PORT=4000

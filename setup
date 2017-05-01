@@ -1,8 +1,5 @@
-# create new project
-docker-compose run web mix phoenix.new project
-
-# change permissions to work locally
-sudo chmod 777 -R project
+# adduser inside the machine and set it as sudo one
+docker-compose run -u ${USER_ID} web mix phoenix.new project
 
 # switch database hostname in the .env file automatically
 sed -i -- 's/project_dev/postgres/g' project/config/dev.exs
