@@ -9,6 +9,10 @@ if [ ! -d $PWD/project ]; then
   ./setup
 fi
 
+mix() {
+    docker-compose run --workdir="/app/project" web mix "$@"
+}
+
 docker-compose stop
 docker-compose rm --force
 docker-compose up -d
